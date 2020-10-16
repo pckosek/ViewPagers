@@ -1,13 +1,11 @@
-package com.pckosek.nonswipeviepager;
+package com.example.argumentviewpager;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.os.Bundle;
-import android.util.Log;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -24,9 +22,6 @@ public class MainActivity extends AppCompatActivity {
         mMyViewPagerAdapter = new MyViewPagerAdapter(this);
         mViewPager.setAdapter(mMyViewPagerAdapter);
 
-//        mViewPager.setUserInputEnabled(false);
-
-
 
     }
 
@@ -39,7 +34,8 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public Fragment createFragment(int position)
         {
-            return FragmentMain.newInstance();
+            // pass the current position to the new fragment
+            return ArgumentFragment.newInstance(position);
         }
 
         @Override
