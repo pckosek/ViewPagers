@@ -34,8 +34,10 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public Fragment createFragment(int position)
         {
+            if (position==1 )
             // pass the current position to the new fragment
-            return ArgumentFragment.newInstance(position);
+                return ArgumentFragment.newInstance(position);
+
         }
 
         @Override

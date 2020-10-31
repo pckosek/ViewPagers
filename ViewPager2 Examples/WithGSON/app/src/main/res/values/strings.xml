@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">My Application</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="questions">
+        [
+            {
+                type     : \"truefalse\",
+                question : \"pure water is made of hydrogen and oxygen\",
+                answer   : "true"
+            },
+            {
+                type     : \"truefalse\",
+                question : \"two plus two equals five\",
+                answer   : "false"
+            }
+        ]
+    </string>
+
+</resources>

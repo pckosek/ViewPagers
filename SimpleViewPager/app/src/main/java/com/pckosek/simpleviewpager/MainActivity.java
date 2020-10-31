@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         // assign the instance of ViewPager
-        mViewPager = findViewById(R.id.container);
+        mViewPager = findViewById(R.id.containered);
 
         // create an adapter for the ViewPager
         mMyViewPagerAdapter = new MyViewPagerAdapter(getSupportFragmentManager());
