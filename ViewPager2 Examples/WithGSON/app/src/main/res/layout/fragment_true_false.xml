@@ -8,29 +8,37 @@
     android:background="#5AA"
     tools:context=".TrueFalseFragment">
 
+    <TextView
+        android:id="@+id/tvQuestion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="PLACEHOLDER"
+        app:layout_constraintBottom_toTopOf="@+id/radioGroup"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <RadioGroup
+        android:id="@+id/radioGroup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:onClick="onRadioButtonClick">
+        app:layout_constraintTop_toTopOf="parent">
 
         <RadioButton
             android:id="@+id/radio_true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="It's true"
-            />
+            android:text="It's true" />
 
         <RadioButton
             android:id="@+id/radio_false"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="It's false"
-        />
+            android:text="It's false" />
 
     </RadioGroup>
 

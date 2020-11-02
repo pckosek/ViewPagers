@@ -7,6 +7,7 @@ import androidx.viewpager2.widget.ViewPager2;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -18,6 +19,7 @@ public class MainActivity extends AppCompatActivity implements TrueFalseFragment
 
     private final static String TAG = "FROM_MAIN_ACTIVITY";
 
+    TextView mStatusText;
     ViewPager2 mViewPager;
     MyViewPagerAdapter mMyViewPagerAdapter;
     ArrayList<Question> mQuestions;
@@ -27,6 +29,8 @@ public class MainActivity extends AppCompatActivity implements TrueFalseFragment
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        mStatusText = findViewById(R.id.tvStatus);
 
         // creat and assign adapter
         mViewPager = findViewById(R.id.container);
@@ -46,8 +50,14 @@ public class MainActivity extends AppCompatActivity implements TrueFalseFragment
     }
 
     @Override
-    public void onTrueFalseFragment() {
-
+    public void onTrueFalseFragment(boolean b) {
+        String s = "Your Answer is: ";
+        if (b) {
+            s += "correct";
+        } else {
+            s += "incorrect";
+        }
+        mStatusText.setText(s);
     }
 
     private class MyViewPagerAdapter extends FragmentStateAdapter {
@@ -69,7 +79,7 @@ public class MainActivity extends AppCompatActivity implements TrueFalseFragment
 
         @Override
         public int getItemCount() {
-            return 1;
+            return 2;
         }
     }
 }

@@ -12,11 +12,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RadioButton;
+import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-public class TrueFalseFragment extends Fragment {
+public class TrueFalseFragment extends Fragment implements View.OnClickListener{
 
     private final static String TAG = "FROM_FRAGMENT";
 
@@ -71,28 +72,43 @@ public class TrueFalseFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        //Assign button callbacks
+        RadioButton rbTrue  = view.findViewById(R.id.radio_true);
+        RadioButton rbFalse = view.findViewById(R.id.radio_false);
+        rbTrue.setOnClickListener(this);
+        rbFalse.setOnClickListener(this);
+
+        // populate question
+        TextView tvQuestion = view.findViewById(R.id.tvQuestion);
+        tvQuestion.setText(mQuestion.question);
     }
 
-    public void onRadioButtonClick(View v) {
-        boolean checked = ((RadioButton) v).isChecked();
 
-        switch (getView().getId()) {
+    @Override
+    public void onClick(View v) {
+        boolean checked = ((RadioButton) v).isChecked();
+        boolean choice, result;
+
+        switch (v.getId()) {
             case R.id.radio_true:
                 if (checked) {
-                    Log.i(TAG,"is true");
-                    mCallback.onTrueFalseFragment();
+                    choice = true;
+                    result = mQuestion.checkAnswer(choice);
+                    mCallback.onTrueFalseFragment(result);
                     break;
                 }
             case R.id.radio_false:
                 if (checked) {
-                    Log.i(TAG,"is false");
-                    mCallback.onTrueFalseFragment();
+                    choice = false;
+                    result = mQuestion.checkAnswer(choice);
+                    mCallback.onTrueFalseFragment(result);
                     break;
                 }
         }
     }
 
     public interface TrueFalseFragmentInterface {
-        void onTrueFalseFragment();
+        void onTrueFalseFragment(boolean b);
     }
 }
